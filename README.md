@@ -7,30 +7,29 @@
 
 Russian | [English](README.en.md)
 
-Клиент для работы с платежами по [API ЮKassa](https://yookassa.ru/developers/api)
-Подходит тем, у кого способ подключения к ЮKassa называется API.
+Клиент для работы с платежами [по API ЮKassa](https://yookassa.ru/developers/api). Подходит тем, у кого способ подключения к ЮKassa называется API.
 
-[Документация по данному SDK](docs/readme.md).
+[Документация по этому SDK](docs/readme.md)
 
 ## Требования
-PHP 5.3.2 (и выше) с расширением libcurl
+PHP 8.0 (и выше) с расширением libcurl
 
 ## Установка
 ### В консоли с помощью Composer
 
-1. Установите менеджер пакетов Composer.
-2. В консоли выполните команду
+1. [Установите менеджер пакетов Composer](https://getcomposer.org/download/).
+2. В консоли выполните команду:
 ```bash
 composer require yoomoney/yookassa-sdk-php
 ```
 
 ### В файле composer.json своего проекта
-1. Добавьте строку `"yoomoney/yookassa-sdk-php": "^2.8"` в список зависимостей вашего проекта в файле composer.json
+1. Добавьте строку `"yoomoney/yookassa-sdk-php": "^3.0"` в список зависимостей вашего проекта в файле composer.json:
 ```
 ...
     "require": {
-        "php": ">=5.3.2",
-        "yoomoney/yookassa-sdk-php": "^2.8"
+        "php": ">=8.0",
+        "yoomoney/yookassa-sdk-php": "^3.0"
 ...
 ```
 2. Обновите зависимости проекта. В консоли перейдите в каталог, где лежит composer.json, и выполните команду:
@@ -42,17 +41,9 @@ composer update
 require __DIR__ . '/vendor/autoload.php';
 ```
 
-### Вручную
-
-1. Скачайте [архив YooKassa API PHP Client Library](https://git.yoomoney.ru/rest/api/latest/projects/SDK/repos/yookassa-sdk-php/archive?format=zip), распакуйте его и скопируйте каталог lib в нужное место в вашем проекте.
-2. В коде вашего проекта подключите автозагрузку файлов нашего клиента:
-```php
-require __DIR__ . '/lib/autoload.php'; 
-```
-
 ## Начало работы
 
-1. Импортируйте нужные классы
+1. Импортируйте нужные классы:
 ```php
 use YooKassa\Client;
 ```
@@ -61,13 +52,15 @@ use YooKassa\Client;
 $client = new Client();
 $client->setAuth('shopId', 'secretKey');
 ```
-3. Вызовите нужный метод API. 
-   
-   [Подробнее в документации к API ЮKassa](https://yookassa.ru/developers/api#create_payment).
-   
-   [Подробнее в документации к SDK ЮKassa](docs/readme.md).
+3. Вызовите нужный метод API.
+
+   [Подробнее в документации по API ЮKassa](https://yookassa.ru/developers/api#create_payment)
+
+   [Подробнее в документации по SDK ЮKassa](docs/readme.md)
 
 ## Примеры использования SDK
+
+#### [Что нового в SDK версии 3.x](docs/examples/migration-3x.md)
 
 #### [Настройки SDK API ЮKassa](docs/examples/01-configuration.md)
 * [Установка дополнительных настроек для Curl](docs/examples/01-configuration.md#Установка-дополнительных-настроек-для-Curl)
@@ -106,11 +99,11 @@ $client->setAuth('shopId', 'secretKey');
 
 #### [Работа с выплатами](docs/examples/06-payouts.md)
 * [Запрос на выплату продавцу](docs/examples/06-payouts.md#Запрос-на-выплату-продавцу)
-  * [Проведение выплаты на банковскую карту](docs/examples/06-payouts.md#проведение-выплаты-на-банковскую-карту)
-  * [Проведение выплаты на кошелек ЮMoney](docs/examples/06-payouts.md#проведение-выплаты-на-кошелек-юmoney)
-  * [Проведение выплаты через СБП](docs/examples/06-payouts.md#проведение-выплаты-через-сбп)
-  * [Выплаты самозанятым](docs/examples/06-payouts.md#выплаты-самозанятым)
-  * [Проведение выплаты по безопасной сделке](docs/examples/06-payouts.md#проведение-выплаты-по-безопасной-сделке)
+  * [Проведение выплаты на банковскую карту](docs/examples/06-payouts.md#Проведение-выплаты-на-банковскую-карту)
+  * [Проведение выплаты в кошелек ЮMoney](docs/examples/06-payouts.md#Проведение-выплаты-в-кошелек-юmoney)
+  * [Проведение выплаты через СБП](docs/examples/06-payouts.md#Проведение-выплаты-через-сбп)
+  * [Выплаты самозанятым](docs/examples/06-payouts.md#Выплаты-самозанятым)
+  * [Проведение выплаты по безопасной сделке](docs/examples/06-payouts.md#Проведение-выплаты-по-безопасной-сделке)
 * [Получить информацию о выплате](docs/examples/06-payouts.md#Получить-информацию-о-выплате)
 
 #### [Работа с самозанятыми](docs/examples/07-self-employed.md)
@@ -123,3 +116,13 @@ $client->setAuth('shopId', 'secretKey');
 
 #### [Работа со списком участников СБП](docs/examples/09-sbp-banks.md)
 * [Получить список участников СБП](docs/examples/09-sbp-banks.md#Получить-список-участников-СБП)
+
+#### [Работа со счетами](docs/examples/10-invoices.md)
+* [Запрос на создание счета](docs/examples/10-invoices.md#Запрос-на-создание-счета)
+* [Запрос на создание счета через билдер](docs/examples/10-invoices.md#Запрос-на-создание-счета-через-билдер)
+* [Получить информацию о счете](docs/examples/10-invoices.md#Получить-информацию-о-счете)
+
+#### [Работа со способами оплаты](docs/examples/11-payment-methods.md)
+* [Запрос на создание способа оплаты](docs/examples/11-payment-methods.md#Запрос-на-создание-способа-оплаты)
+* [Запрос на создание способа оплаты через билдер](docs/examples/11-payment-methods.md#Запрос-на-создание-способа-оплаты-через-билдер)
+* [Получить информацию о способе оплаты](docs/examples/11-payment-methods.md#Получить-информацию-о-способе-оплаты)
